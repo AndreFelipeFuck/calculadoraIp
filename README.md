@@ -10,7 +10,7 @@ Sistema web que calcula o seu IP
             O último endereço de host de cada sub-rede;
             Destacar na exibição o bloco de informações em que o endereço informado estiver localizado
             A nova máscara da rede, em formato decimal;
-            A classe a que o IP pertence;
+            #A classe a que o IP pertence;
             Se o IP é público ou privado;
             
 ///////////////////////////////////////////////////////////////////
