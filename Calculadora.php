@@ -18,11 +18,4 @@
         }
     }
 
- /*   $x = new Calculadora;
-    $x->ip = '255.256.255.255';
-    $x->transformaIp();
-    $x->sanitizar();
-     print_r($x);
-    echo ' ###########=> ';
-    echo $x->ip[3];
-*/
+ 
