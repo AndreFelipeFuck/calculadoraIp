@@ -2,20 +2,39 @@
     class Calculadora{
         public $ip;
 
-       public function transformaIp(){// deixar isso no contruct?
-            $divisor = explode(".",$this->ip);
-           $this->ip = $divisor;
+        public function __construct($ip){
+           $this->transformaIp($ip);
+           $this->sanitizar();
         }
+       public function transformaIp($ip){
+            $divisor = explode(".",$ip);
+             $this->ip = $divisor;
+        }
+
         public function sanitizar(){
-            foreach($this->ip as $value){
-                if($value <= 255){
-                    echo 'Tudo certo chefe ## ';
-                }else{
-                    echo 'Seu IP está incorreto!';
-                    break;  
+            $contar = count($this->ip);
+            $chave = null;
+            if($contar == 4){
+                foreach($this->ip as $value){
+                    if($value <= 255){
+                        $chave = TRUE;
+                    }else{
+                        $chave = FALSE;
+                        break;  
+                    }
                 }
+            }else{
+                echo 'Seu Ip foi escrito errado';
+            }
+            
+            if($chave == TRUE){
+                echo "Tudo certo chefe";
+
+            }if($chave == FALSE){
+                echo "Seu ip está errado";
             }
         }
+
     }
 
  
