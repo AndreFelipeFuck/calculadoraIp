@@ -31,7 +31,7 @@
             }
             
             if($chave == TRUE){
-                echo " ## Tudo certo chefe ## ";//modificar
+                //echo " ## Tudo certo chefe ## ";//modificar
 
             }if($chave == FALSE){
                 echo "Seu ip está errado";//modificar
@@ -41,7 +41,7 @@
         public function sanitizarBarra($barra){
             if($barra >= 24){
                 if($barra <= 32){
-                    echo '## Tudo certo chefe ##  ';
+                   // echo '## Tudo certo chefe ##  ';
                     $this->barra = $barra;
                 }else{
                     echo 'Sua barra esta incorreta';//modificar
@@ -68,10 +68,44 @@
                 }  
             }
         }
+
+        public function tipoIp(){
+            $listaDeIps = array(10, 172, 192, 169);
+            
+            foreach($listaDeIps as $value){
+                if($this->ip[0] == $value){
+                    echo 'IP privado';
+                    break;
+                }elseif($this->ip[0] != $value){
+                    echo 'IP publico';
+                    break;
+                }
+            }
+        }
+
+        public function qtdSubRedes(){
+            $barra = array (
+                '24' =>(1),
+                '25' =>(2),
+                '26' =>(4),
+                '27' =>(8),
+                '28' =>(16),
+                '29' =>(32),
+                '30' =>(64),
+                '31' =>(128),
+                '32' =>(256),
+            );
+
+            foreach($barra as $key => $value){
+                if($this->barra == $key){
+                    echo "A quantidade de sub-redes possíveis com a  máscara informada é de $value sub-rede";
+                }
+            }
+        }
     }
 
-    $x = new Calculadora('1.1.1.1','24');
-     $x->classeIP();
+    $x = new Calculadora('1.1.1.1','32');
+     $x->qtdSubRedes();
     
   
 
