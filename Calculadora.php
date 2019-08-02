@@ -5,8 +5,21 @@
 
         public function __construct($ip,$barra){
            $this->transformaIp($ip);
-           $this->sanitizar();
-           $this->sanitizarBarra($barra);
+           $chave = $this->sanitizarIp();
+           $chave1 = $this->sanitizarBarra($barra);
+
+           if($chave == FALSE and $chave1 == FALSE){
+                echo "Seu IP está Incorreto";
+            }elseif($chave == FALSE and $chave1 == TRUE){
+                echo "Seu endereço IP está errado";
+            }elseif($chave == TRUE and $chave1 == FALSE){
+                echo "Seu divisão de sub rede está errada";
+            }else{
+                $this->classeIp();
+                $this->tipoIp();
+                $this->qtdSubRedes();
+            }
+
         }
 
        public function transformaIp($ip){
@@ -14,40 +27,40 @@
              $this->ip = $divisor;
         }
 
-        public function sanitizar(){
+        public function sanitizarIp(){
             $contar = count($this->ip);
             $chave = null;  
             if($contar == 4){
                 foreach($this->ip as $value){
                     if($value <= 255){
                         $chave = TRUE;
+                        return $chave;
                     }else{
                         $chave = FALSE;
+                        return $chave;
                         break;  
                     }
                 }
             }else{
-                echo 'Seu Ip foi escrito errado';//modificar
-            }
-            
-            if($chave == TRUE){
-                //echo " ## Tudo certo chefe ## ";//modificar
-
-            }if($chave == FALSE){
-                echo "Seu ip está errado";//modificar
+                $chave = FALSE;
+                return $chave;
             }
         }
         
         public function sanitizarBarra($barra){
+            $chave = null;
             if($barra >= 24){
                 if($barra <= 32){
-                   // echo '## Tudo certo chefe ##  ';
+                    $chave = TRUE;
+                    return $chave;
                     $this->barra = $barra;
                 }else{
-                    echo 'Sua barra esta incorreta';//modificar
+                   $chave = FALSE;
+                   return $chave;
                 }
             }else{
-                echo 'Sua barra esta incorreta';//modificar    
+                $chave = FALSE;
+                return $chave;
             }    
         }
 
@@ -63,27 +76,33 @@
             foreach($divisor as $key => $value){
                 if( $this->ip[0] >= $value[0]){
                     if($this->ip[0] <= $value[1]){
-                        echo $key;
+                        echo "$key <br>";
                     }
                 }  
             }
         }
 
         public function tipoIp(){
+            $chave = null;
             $listaDeIps = array(10, 172, 192, 169);
             
             foreach($listaDeIps as $value){
                 if($this->ip[0] == $value){
-                    echo 'IP privado';
+                    $chave = TRUE;
                     break;
-                }elseif($this->ip[0] != $value){
-                    echo 'IP publico';
-                    break;
+                }else{
+                    $chave = FALSE;
                 }
+                
+            }
+            if($chave == TRUE){
+                echo "IP privado <br>";
+            }elseif($chave == FALSE){
+                echo "IP publico <br>";
             }
         }
 
-        public function qtdSubRedes(){
+        public function qtdSubRedes(){//Problema
             $barra = array (
                 '24' =>(1),
                 '25' =>(2),
@@ -98,14 +117,16 @@
 
             foreach($barra as $key => $value){
                 if($this->barra == $key){
-                    echo "A quantidade de sub-redes possíveis com a  máscara informada é de $value sub-rede";
+                    echo "A quantidade de sub-redes possíveis com a  máscara informada é de". $value ."sub-rede <br>";
                 }
             }
         }
     }
 
-    $x = new Calculadora('1.1.1.1','32');
-     $x->qtdSubRedes();
+    $x = new Calculadora('12.1.1.1','32');
+
+   
+     
     
   
 
