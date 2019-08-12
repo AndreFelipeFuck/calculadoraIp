@@ -1,0 +1,120 @@
+.navbar{
+	width: 20%;
+	margin: 2%;
+}
+
+#logo{
+	width: 80px;
+	height: 80px;
+	display: inline;
+}
+
+.conteiner1{
+	display: inline-block;
+	width: 90%;
+	height: 90%;
+	margin-left: 5%; 
+	margin-right: 5%; 
+	border-radius: 10px; 
+	border: 1px solid  #C33357;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.conteiner1 section{
+	padding: 2%;
+}
+
+.calcCont{
+	margin: 1%;
+	float: left;
+	width: 50%;
+ 	padding: 2%;
+}
+
+#exampleFormControlInput1{
+	width: 30%;
+}
+
+#exampleFormControlInput2{
+	width: 30%;
+}
+
+form{
+	width: 90%;
+}
+
+#btn-calc{
+	width: 25%;
+	background-color: transparent;
+    background-image: none;
+	border-color:   #9C2946;
+	color:  #9C2946;
+}
+
+#btn-calc:hover {
+	color: #fff;
+    background-color:  #9C2946;
+    border-color:  #9C2946;
+}
+
+.card1{
+	padding: 1%;
+	padding-left: 2%;
+	height: 15%;
+	width: 85%;
+	border-radius: 3px;
+	background-color:  #C33357;
+	color: #fff;
+}
+
+.card2{
+	padding: 1%;
+	padding-left: 2%;
+	height: 15%;
+	width: 100%;
+	border-radius: 3px;
+	background-color:  #C33357;
+	color: #fff;
+}
+
+.calcCont p{
+	color: #5a656f;
+	margin-top: 2%;
+}
+
+
+.infoCont p{
+	margin-top: 2%;
+}
+
+.sobCont p{
+	margin-top: 2%;
+	text-align: left;
+}
+
+.infoCont{
+	margin: 1%;
+	display: inline-block;
+	width: 45%;
+ 	border-left: 2px solid #C33357;
+ 	padding: 1%;
+}
+
+footer{
+	margin-top: 2%;
+}
+
+.rodape{
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	border: 1px solid  #9C2946;
+	width: 100%;
+	background-color:  #9C2946;
+}
+
+.rodape p{
+	padding: 0.3%;
+}
+
+

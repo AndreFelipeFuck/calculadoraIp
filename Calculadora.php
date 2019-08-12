@@ -4,9 +4,17 @@
         public $barra;
 
         public function __construct($ip,$barra){
+            $this->ip = $_POST['ip'];
+            $this->barra = $_POST['barra'];
            $this->transformaIp($ip);
            $this->sanitizar();
            $this->sanitizarBarra($barra);
+
+            $this->classeIp();
+            $this->tipoIp();
+            $this->qtdSubRedes();
+           
+           
         }
 
        public function transformaIp($ip){
@@ -104,9 +112,7 @@
         }
     }
 
-    $x = new Calculadora('1.1.1.1','32');
-     $x->qtdSubRedes();
-    
+   
   
 
 
