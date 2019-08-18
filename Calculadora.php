@@ -4,16 +4,13 @@
         public $barra;
 
         public function __construct($ip,$barra){
-            $this->ip = $_POST['ip'];
-            $this->barra = $_POST['barra'];
            $this->transformaIp($ip);
            $this->sanitizar();
            $this->sanitizarBarra($barra);
 
-            $this->classeIp();
-            $this->tipoIp();
-            $this->qtdSubRedes();
-           
+            //$this->classeIp();
+            //$this->tipoIp();
+            //$this->qtdSubRedes();
            
         }
 
@@ -101,18 +98,133 @@
                 '29' =>(32),
                 '30' =>(64),
                 '31' =>(128),
-                '32' =>(256),
+                '32' =>(256)
             );
 
             foreach($barra as $key => $value){
                 if($this->barra == $key){
-                    echo "A quantidade de sub-redes possíveis com a  máscara informada é de $value sub-rede";
+                    if($value == 1){
+                         echo " $value rede";
+                    }else{
+                        echo " $value redes";
+                    }
+                   
                 }
             }
         }
+
+        public function novaMascara(){
+            $barra = array(
+                '24' =>(0),
+                '25' =>(128),
+                '26' =>(192),
+                '27' =>(224),
+                '28' =>(240),
+                '29' =>(248),
+                '30' =>(252),
+                '31' =>(254),
+                '32' =>(255)
+            );
+            foreach ($barra as $key => $value) {
+               if ($this->barra == $key) {
+                   echo " 255.255.255.$value";
+               }
+            }
+        }
+
+        public function qtdNumeroHots(){
+             $barra = array(
+                '24' =>(8),
+                '25' =>(7),
+                '26' =>(6),
+                '27' =>(5),
+                '28' =>(4),
+                '29' =>(3),
+                '30' =>(2),
+                '31' =>(1),
+                '32' =>(0)
+            );
+
+             foreach ($barra as $key => $value) {
+                if( $this->barra == $key){
+                    $hosts = pow(2, $value) - (2);
+                    echo $hosts;
+                }
+             }
+         }
+
+        public function endRedeBrod(){
+                $numero = 0;
+                $broadcast = 0;
+                $rede = 0;
+                $endereco = array(
+                    'rede'=>array(),
+                    'broadcast'=>array()
+                );
+                array_push($endereco['rede'], $rede);
+                 $barra = array(
+                    '24' =>(8),
+                    '25' =>(7),
+                    '26' =>(6),
+                    '27' =>(5),
+                    '28' =>(4),
+                    '29' =>(3),
+                    '30' =>(2),
+                    '31' =>(1),
+                    '32' =>(0)
+                );
+                 foreach ($barra as $key => $value) {
+                    if( $this->barra == $key){
+                        $hosts = pow(2, $value) - (2);
+                        $divisor = 256/pow(2, $value);
+                    }
+                           
+                 }
+                 $divisor = $divisor - 1;
+                do {
+                    $broadcast = $rede + $hosts + 1;
+                    array_push($endereco['broadcast'], $broadcast);
+                    $rede = $broadcast + 1;
+                    array_push($endereco['rede'], $rede);
+                    $numero++;
+                } while ($numero <= $divisor);
+                if (end($endereco['rede']) == 256 ) {
+                    array_pop($endereco['rede']);
+                }
+            return $endereco;
+        }
+
+        public function priEndHost(){
+            $endereco = $this->endRedeBrod();
+            $hosts = array();
+            $host = 0;
+            foreach ($endereco['rede'] as $key => $value) {
+                $host = $value + 1;
+                array_push($hosts, $host);
+            }
+            return $hosts;
+        }
+
+        public function ultiEndHost(){
+            $endereco = $this->endRedeBrod();
+            $hosts = array();
+            $host = 0;
+            foreach ($endereco['broadcast'] as $key => $value) {
+                $host = $value - 1;
+                array_push($hosts, $host);
+            }
+            return $hosts;
+        }
     }
 
-   
+    $ip = $_POST['ip'];
+    $barra = $_POST['barra'];
+    $calc = new Calculadora($ip, $barra);
+    $endereco = $calc->ultiEndHost();
+    $calc->priEndHost();
+    //print_r($endereco);
+    include 'result.php';
+
   
 
 
