@@ -19,6 +19,32 @@
 						<label for="exampleFormControlInput1"><h5>Quantidade de hots por rede: <?php   $calc -> qtdNumeroHots();?></h5></label>
 					</div>
 					<div class="form-group">
+						
+						<table class="table">
+						  <thead class="tabela">
+							<tr>
+							  <th scope="col">Endereço de Rede:</th>
+							  <th scope="col">Endereços do broadcast:</th>
+							  <th scope="col">Primeiro endereço de host:</th>
+							  <th scope="col">Último endereço de host:</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>1</td>
+							  <td>Mark</td>
+							  <td>Otto</td>
+							  <td>@mdo</td>
+							</tr>
+							<tr>
+							  <td>1</td>
+							  <td>Mark</td>
+							  <td>Otto</td>
+							  <td>@mdo</td>
+							</tr>
+						  </tbody>
+						</table>
+						
 						<label for="exampleFormControlInput1"><h5>O endereços de rede:<br>
 							<?php 
 								foreach ($endereco['rede'] as $key => $value) {

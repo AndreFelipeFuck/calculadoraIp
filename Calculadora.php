@@ -251,6 +251,7 @@
     $endereco = $calc->endRedeBrod();
     $host = $calc->priEndHost();
     $ultHost = $calc->ultiEndHost();
+ 
     include 'result.php';
 
   
