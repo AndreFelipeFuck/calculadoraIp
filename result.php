@@ -19,44 +19,68 @@
 						<label for="exampleFormControlInput1"><h5>Quantidade de hots por rede: <?php   $calc -> qtdNumeroHots();?></h5></label>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O endereços de rede:
+						<label for="exampleFormControlInput1"><h5>O endereços de rede:<br>
 							<?php 
-								/*foreach ($endereco['rede'] as $key => $value) {
+								foreach ($endereco['rede'] as $key => $value) {
 									print_r($calc->ip[0]);
 									echo ".";
 									print_r($calc->ip[1]);
 									echo ".";
 									print_r($calc->ip[2]);
 									echo ".";
-									?>
-									<pre><?php echo "$value";?></pre>
-									<?php 
-								}*/
+									echo "$value";
+									?><br><?php
+								}
 							?>
 						</h5></label>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O endereços do broadcast:
+						<label for="exampleFormControlInput1"><h5>O endereços do broadcast:<br>
 							<?php 
-								/*foreach ($endereco['broadcast'] as $key => $value) {
+								foreach ($endereco['broadcast'] as $key => $value) {
 									print_r($calc->ip[0]);
 									echo ".";
 									print_r($calc->ip[1]);
 									echo ".";
 									print_r($calc->ip[2]);
 									echo ".";
-									?>
-									<pre><?php echo "$value";?></pre>
-									<?php 
-								}*/
+									echo "$value";
+									?><br><?php
+								}
 							?>
 						</h5></label>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O primeiro endereço de host:</h5></label>
+						<label for="exampleFormControlInput1"><h5>O primeiro endereço de host:<br>
+							<?php 
+								foreach ($host as $key => $value) {
+									print_r($calc->ip[0]);
+									echo ".";
+									print_r($calc->ip[1]);
+									echo ".";
+									print_r($calc->ip[2]);
+									echo ".";
+									echo "$value";
+									?><br><?php
+								}
+							?>
+						</h5></label>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O último endereço de host:</h5></label>
+						<label for="exampleFormControlInput1"><h5>O último endereço de host:<br>
+							<?php 
+								foreach ($ultHost as $key => $value) {
+									print_r($calc->ip[0]);
+									echo ".";
+									print_r($calc->ip[1]);
+									echo ".";
+									print_r($calc->ip[2]);
+									echo ".";
+									echo "$value";
+									?><br><?php
+								}
+							?>
+						</h5></label>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1"><h5>Nova máscara de rede em formato decimal: <?php $calc->novaMascara();?></h5></label>

@@ -76,16 +76,44 @@
 
         public function tipoIp(){
             $listaDeIps = array(10, 172, 192, 169);
+            $flag = null;
             
             foreach($listaDeIps as $value){
                 if($this->ip[0] == $value){
-                    echo 'IP privado';
+                   $flag = 1;
                     break;
                 }elseif($this->ip[0] != $value){
-                    echo 'IP publico';
-                    break;
+                    $flag = 0;
+                    continue;
                 }
             }
+
+             if($flag == 1){
+                    echo 'IP privado';
+                }
+                elseif($flag == 0) {
+                    echo 'IP público';
+                }
+
+            /*for ($i=0; $i<sizeof($listaDeIps); $i++) {
+               
+
+                if($this->ip[0] == $listaDeIps[$i]){   
+                    $flag = 1;
+                }
+                i
+                
+            } */
+
+            /*$key = array_search('$this->ip[0]', $listaDeIps);
+            if ($key != NULL) {
+                echo 'IP privado';
+            }
+            else{
+                echo 'IP público'; 
+            }*/
+           
+           //echo $flag;
         }
 
         public function qtdSubRedes(){
@@ -220,9 +248,9 @@
     $ip = $_POST['ip'];
     $barra = $_POST['barra'];
     $calc = new Calculadora($ip, $barra);
-    $endereco = $calc->ultiEndHost();
-    $calc->priEndHost();
-    //print_r($endereco);
+    $endereco = $calc->endRedeBrod();
+    $host = $calc->priEndHost();
+    $ultHost = $calc->ultiEndHost();
     include 'result.php';
 
   

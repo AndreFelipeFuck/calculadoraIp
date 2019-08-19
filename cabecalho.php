@@ -24,7 +24,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="indexCalc">Calculadora<span class="sr-only"></span></a>
+        <a class="nav-link" href="indexCalc.php">Calculadora<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="sobre.php">Sobre<span class="sr-only"></span></a>
