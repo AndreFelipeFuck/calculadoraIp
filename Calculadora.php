@@ -251,6 +251,21 @@
     $endereco = $calc->endRedeBrod();
     $host = $calc->priEndHost();
     $ultHost = $calc->ultiEndHost();
+
+    $result = array(
+        'rede' => (null),
+        'primeiro_host' => (null),
+        'ultimo_host' => (null),
+        'broadcast' => (null)
+    );
+    $result['rede'] = $endereco['rede'];
+    $result['primeiro_host'] = $host;
+    $result['ultimo_host'] = $ultHost;
+    $result['broadcast'] = $endereco['broadcast'];
+
+    $qtd  = count($result['rede']);
+    //echo "$qtd";
+    print_r($result);
  
     include 'result.php';
 

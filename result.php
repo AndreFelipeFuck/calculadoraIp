@@ -1,12 +1,13 @@
 <?php 
+	//error_reporting(E_ALL);
 	include "cabecalho.php";
-	//var_dump($_POST);
+	
 ?>
 <br>
-	<div class="conteiner1">
+	<section class="conteiner1">
 		<section class="resultCont">
 			<div class="card2"><h3>Resultado:</h3></div>
-				<form class="form-group">
+				<div class="form-group">
 					<div class="form-group">
 						<label for="exampleFormControlInput1"><h4>O IP inserido foi: <?php echo $_POST['ip'];?></h4></label>
 						<br>
@@ -24,90 +25,68 @@
 						  <thead class="tabela">
 							<tr>
 							  <th scope="col">Endereço de Rede:</th>
-							  <th scope="col">Endereços do broadcast:</th>
 							  <th scope="col">Primeiro endereço de host:</th>
 							  <th scope="col">Último endereço de host:</th>
+							  <th scope="col">Endereços do broadcast:</th>
 							</tr>
 						  </thead>
 						  <tbody>
-							<tr>
-							  <td>1</td>
-							  <td>Mark</td>
-							  <td>Otto</td>
-							  <td>@mdo</td>
-							</tr>
-							<tr>
-							  <td>1</td>
-							  <td>Mark</td>
-							  <td>Otto</td>
-							  <td>@mdo</td>
-							</tr>
+							<?php for ($i=0; $i < $qtd ; $i++) { 
+								?><tr>
+									<td>
+										<?php  
+											print_r($calc->ip[0]);
+											echo ".";
+											print_r($calc->ip[1]);
+											echo ".";
+											print_r($calc->ip[2]);
+											echo ".";
+											echo $result['rede'][$i];
+										?>
+									</td>
+
+									<td>
+										<?php  
+											print_r($calc->ip[0]);
+											echo ".";
+											print_r($calc->ip[1]);
+											echo ".";
+											print_r($calc->ip[2]);
+											echo ".";
+											echo $result['primeiro_host'][$i];
+										?>
+									</td>
+
+									<td>
+										<?php  
+											print_r($calc->ip[0]);
+											echo ".";
+											print_r($calc->ip[1]);
+											echo ".";
+											print_r($calc->ip[2]);
+											echo ".";
+											echo $result['ultimo_host'][$i];
+										?>
+									</td>
+
+									<td>
+										<?php  
+											print_r($calc->ip[0]);
+											echo ".";
+											print_r($calc->ip[1]);
+											echo ".";
+											print_r($calc->ip[2]);
+											echo ".";
+											echo $result['broadcast'][$i];
+										?>
+									</td>
+
+
+								</tr><?php
+							}?>
+								
 						  </tbody>
-						</table>
-						
-						<label for="exampleFormControlInput1"><h5>O endereços de rede:<br>
-							<?php 
-								foreach ($endereco['rede'] as $key => $value) {
-									print_r($calc->ip[0]);
-									echo ".";
-									print_r($calc->ip[1]);
-									echo ".";
-									print_r($calc->ip[2]);
-									echo ".";
-									echo "$value";
-									?><br><?php
-								}
-							?>
-						</h5></label>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O endereços do broadcast:<br>
-							<?php 
-								foreach ($endereco['broadcast'] as $key => $value) {
-									print_r($calc->ip[0]);
-									echo ".";
-									print_r($calc->ip[1]);
-									echo ".";
-									print_r($calc->ip[2]);
-									echo ".";
-									echo "$value";
-									?><br><?php
-								}
-							?>
-						</h5></label>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O primeiro endereço de host:<br>
-							<?php 
-								foreach ($host as $key => $value) {
-									print_r($calc->ip[0]);
-									echo ".";
-									print_r($calc->ip[1]);
-									echo ".";
-									print_r($calc->ip[2]);
-									echo ".";
-									echo "$value";
-									?><br><?php
-								}
-							?>
-						</h5></label>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1"><h5>O último endereço de host:<br>
-							<?php 
-								foreach ($ultHost as $key => $value) {
-									print_r($calc->ip[0]);
-									echo ".";
-									print_r($calc->ip[1]);
-									echo ".";
-									print_r($calc->ip[2]);
-									echo ".";
-									echo "$value";
-									?><br><?php
-								}
-							?>
-						</h5></label>
-					</div>
+						</table>	
 					<div class="form-group">
 						<label for="exampleFormControlInput1"><h5>Nova máscara de rede em formato decimal: <?php $calc->novaMascara();?></h5></label>
 					</div>
@@ -122,10 +101,10 @@
 					<div>
 						<button type="submit" class="btn" id="btn-menu" action="">⬅ Menu</button>
 					</div>
-				</form>
+				</div>
 		</section>
 		
-	</div>
+	</div>>
 <?php 
 	include "rodape.php";
 ?>
